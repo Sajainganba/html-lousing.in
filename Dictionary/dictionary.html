@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dictionary App</title>
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+    <link rel="stylesheet"href="https://fonts.googleapis.com/css?family=Poppins&display=swap"/>
+    <link rel="stylesheet" href="style1.css"/>
+    <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+<div style="padding: 10px;">
+    <h1><img src="logo.png" alt=""> Welcome to Lousing</h1>
+</div>
+
+
+<div class="navbar">
+    <a href="../index.html">Home</a>
+    <a href="../about.html">About</a>
+    <a href="../contact.html">Contact</a>
+    <div class="dropdown">
+        <button class="dropbtn">Category</button>
+        <div class="dropdown-content">
+            <a href="#">BOSEM/CHOSEM</a>
+            <a href="#">Nobal</a>
+            <a href="#">Fairy tale</a>
+            <a href="#">Motivation book</a>
+            <a href="">Story</a>
+            
+        </div>
+    </div>
+    <a href="dictionary.html">Dictionary</a>
+    
+    <div class="search-container">
+        <input type="text" placeholder="Search..." class="search-input" id="search-input">
+        <button type="button" class="search-button" onclick="search()">Search</button>
+    </div>
+    <script src="script.js"></script>
+    <div class="signUp-container">
+        <a href="signUpLogIn.html"><button type="button" class="signUp-button">Sign up</button></a>
+    </div>
+</div>
+<div class="container">
+    <div class="search-box">
+    <input type="text" id="inp-word" placeholder="Enter a word">
+    <button id="search-btn">Search</button>
+</div>
+
+    <div id="result">
+        <h2 id="word"></h2>
+        <p id="pos"></p>
+        <p id="definition"></p>
+        
+    </div>
+
+   
+</div>
+    <script>
+        const url = "https://api.dictionaryapi.dev/api/v2/entries/en";
+        const result = document.getElementById("result");
+        const sound = document.getElementById("sound");
+        const btn = document.getElementById("search-btn");
+
+        btn.addEventListener("click", () => {
+            let inpWord = document.getElementById("inp-word").value;
+
+            if (!inpWord) {
+                alert("Please enter a word");
+                return;
+            }
+
+            fetchData(inpWord);
+        });
+
+        async function fetchData(word) {
+            try {
+                const response = await fetch(`${url}/${word}`);
+                const data = await response.json();
+
+                if (data.title === "No Definitions Found") {
+                    alert("No definitions found for the entered word");
+                    return;
+                }
+
+                displayResults(data[0]);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        }
+
+        function displayResults(data) {
+            document.getElementById("word").innerText = data.word;
+            document.getElementById("pos").innerText = `Part of Speech: ${data.meanings[0].partOfSpeech}`;
+            document.getElementById("definition").innerText = `Definition: ${data.meanings[0].definitions[0].definition}`;
+            
+
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width = device-width, initial-scal=1.0" charset="UTF-8" />
+    <title>Lousing</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div style="padding: 10px;">
+        <h1><img src="logo.png" alt=""> Welcome to Lousing</h1>
+    </div>
+    
+   
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <div class="dropdown">
+            <button class="dropbtn">Category</button>
+            <div class="dropdown-content">
+                <a href="#">BOSEM/CHOSEM</a>
+                <a href="#">Nobal</a>
+                <a href="#">Fairy tale</a>
+                <a href="#">Motivation book</a>
+                <a href="">Story</a>
+                
+            </div>
+        </div>
+        <a href="./Dictionary/dictionary.html">Dictionary</a>
+        
+        <div class="search-container">
+            <input type="text" placeholder="Search..." class="search-input" id="search-input">
+            <button type="button" class="search-button" onclick="search()">Search</button>
+        </div>
+        <script src="script.js"></script>
+        <div class="signUp-container">
+            <a href="signUpLogIn.html"><button type="button" class="signUp-button">Sign up</button></a>
+        </div>
+    </div>
+
+
+    <div class="book-list">
+        <h2>Featured Books</h2>
+        <ul>
+            <li>
+                <img src="book1.jpg" alt="Book 1">
+                <h3>Computer</h3>
+                <p>Author: Author Name</p>
+               
+            </li>
+            <hr>
+            <li>
+                <img src="book2.jpg" alt="Book 2">
+                <h3>Social Science</h3>
+                <p>Author: Author Name</p>
+               
+            </li>
+        <hr>
+            <li>
+                <img src="book3.jpg" alt="Book 3">
+                <h3>Book Title 3</h3>
+                <p>Author: Author Name</p>
+               
+            </li>
+               
+        </ul>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2023 Lousing. All rights reserved.</p>
+    </div>
+
+    <script src="serach.js"></script>
+    
+</body>
+</html>
